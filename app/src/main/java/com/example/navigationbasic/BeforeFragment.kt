@@ -19,10 +19,9 @@ class BeforeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_before, container, false)
         // clickイベントリスナーを登録
         view.findViewById<Button>(R.id.btnNext).setOnClickListener { v ->
-            Navigation.findNavController(v).navigate(R.id.afterFragment,
-                // 0~100の乱数をAfterFragmentに送信
-                Bundle().apply {
-                    putInt("num", Random().nextInt(100))
+            Navigation.findNavController(v).navigate(
+                BeforeFragmentDirections.actionBeforeFragmentToAfterFragment().apply {
+                    num = Random().nextInt(100)
                 }
             )
         }
